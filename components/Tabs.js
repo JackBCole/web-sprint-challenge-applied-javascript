@@ -12,8 +12,36 @@
 
 axios.get('https://lambda-times-backend.herokuapp.com/topics')
 .then(response => {
-console.log(response)
+console.log(response.data.topics)
+response.data.topics.forEach(topic =>{
+topics.appendChild(tabMaker(topic))
+})
 })
 .catch(error => {
-    console.log(error)
+    console.log('data not returned', error)
 })
+
+// axios.get("https://lambda-times-backend.herokuapp.com/topics")
+//     .then(res => {
+//         console.log(res.data.topics)
+//         res.data.topics.forEach(topic => {
+//             topics.appendChild(tabMaker(topic));
+//         })
+//     })
+//     .catch(err => {
+//         console.log(err);
+//     })
+
+const topics= document.querySelector('.topics')
+console.log(topics)
+
+function tabMaker(item){
+
+const tab = document.createElement('div')
+tab.classList.add('tab')
+tab.textContent = item
+return tab
+}
+console.log(tabMaker())
+
+ 
